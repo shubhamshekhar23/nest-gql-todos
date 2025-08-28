@@ -77,15 +77,12 @@ mutation {
     id
     title
     completed
-    user {
-      id
-      username
-    }
+    userId
   }
 }
 ```
 
-**Get All Users:**
+**Get All Users with their Todos:**
 
 ```graphql
 query {
@@ -98,6 +95,45 @@ query {
       completed
     }
   }
+}
+```
+
+**Get All a single user by id with their Todos:**
+
+```graphql
+query {
+  user(id: 1) {
+    id
+    username
+    todos {
+      id
+      title
+      completed
+    }
+  }
+}
+```
+
+**Update one todo:**
+
+```graphql
+mutation {
+  updateTodo(
+    userId: 1
+    input: { id: 1, completed: true, title: "First task (done)" }
+  ) {
+    id
+    title
+    completed
+  }
+}
+```
+
+**Delete a toto**
+
+```graphql
+mutation {
+  deleteTodo(userId: 1, id: 1)
 }
 ```
 

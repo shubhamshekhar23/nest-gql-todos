@@ -7,8 +7,8 @@ import { TodosModule } from './todos/todos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { User } from './users/user.entity';
-import { Todo } from './todos/todo.entity';
+import { User } from './users/entities/user.entity';
+import { Todo } from './todos/entities/todo.entity';
 
 @Module({
   imports: [

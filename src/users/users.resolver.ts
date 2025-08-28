@@ -1,11 +1,24 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { UsersService } from './users.service';
-import { User } from './user.entity';
+import { User } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
+import { Todo } from 'src/todos/entities/todo.entity';
+import { TodosService } from 'src/todos/todos.service';
 
 @Resolver(() => User)
 export class UsersResolver {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly todosService: TodosService,
+  ) {}
 
   @Query(() => [User])
   users() {
@@ -20,5 +33,12 @@ export class UsersResolver {
   @Mutation(() => User)
   createUser(@Args('input') input: CreateUserInput) {
     return this.usersService.create(input);
+  }
+
+  @ResolveField(() => [Todo], { name: 'todos' })
+  todos(@Parent() user: User) {
+    // user.id should be available; fall back to userId if needed
+    const userId = (user as any).id;
+    return this.todosService.findByUser(userId);
   }
 }

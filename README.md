@@ -14,6 +14,25 @@ A simple Todo application built with [NestJS](https://nestjs.com/), [TypeORM](ht
 - Modular structure (users, todos)
 - TypeORM for database access
 
+## 🔮 Coming Soon Features
+
+- Authentication & Authorization
+  ✅ Add signup / login (JWT or sessions).
+  ✅ Restrict todos so that users can only access their own.
+  ✅ Add role-based access (e.g., admin can see all todos).
+
+- Todo Enhancements
+  ✅ Status → pending, in-progress, done.
+  ✅ Priority → low, medium, high.
+  ✅ Due date → reminders for deadlines.
+  ✅ Categories/Tags → group todos (e.g., Work, Personal).
+  ✅ Subtasks → break big todos into smaller ones.
+
+- User Experience Features
+  ✅ Search & Filters → query todos by status, priority, or due date.
+  ✅ Sorting → by creation date, deadline, or priority.
+  ✅ Pagination → useful when todos grow large.
+
 ## Getting Started
 
 ### Prerequisites
